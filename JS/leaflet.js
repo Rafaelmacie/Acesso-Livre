@@ -102,7 +102,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                 alt: `Marcador ${local.tipo_acessibilidade} para ${local.nome_local}`
             })
                 .addTo(map)
-                .bindPopup(popupContent);
+                .bindPopup(popupContent, { closeButtonLabel: 'Fechar' });
         });
 
     } catch (erro) {
@@ -131,8 +131,17 @@ document.addEventListener("DOMContentLoaded", async function () {
     const toggleMapSizeBtn = document.getElementById("toggleMapSize");
     if (toggleMapSizeBtn && mapContainer) {
         toggleMapSizeBtn.addEventListener("click", () => {
+            // Alterna a classe que ativa o modo de tela cheia
             mapContainer.classList.toggle("fullscreen");
+            // Invalida o tamanho do mapa para que ele se redesenhe corretamente
             map.invalidateSize();
+
+            // Verifica se o mapa ENTROU no modo de tela cheia
+            if (mapContainer.classList.contains("fullscreen")) {
+                trapFocus(mapContainer); // Prende o foco dentro do mapa
+            } else {
+                removeTrapFocus(); // Libera o foco quando sai da tela cheia
+            }
         });
     }
 });
