@@ -89,68 +89,6 @@
 
   </header>
 
-  <!-- Botão Flutuante -->
-  <button id="openPopup"
-    class="fixed bottom-5 right-5 bg-blue-600 text-white px-4 py-2 rounded-full shadow-lg hover:bg-blue-700 transition">
-    Explicações Gerais
-  </button>
-
-  <!-- Fundo do Modal -->
-  <div id="popupModal" role="dialog" aria-modal="true" aria-labelledby="popupTitle"
-    class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50">
-    <!-- Caixa do Modal -->
-    <div class="bg-white rounded-lg shadow-lg max-w-2xl w-full p-6 relative overflow-y-auto max-h-[80vh]">
-      <!-- Botão de Fechar -->
-      <button id="closePopup" class="absolute top-3 right-3 text-gray-600 hover:text-gray-900 text-xl"
-        aria-label="Fechar janela de explicações">✖</button>
-
-      <h2 class="text-2xl font-bold text-green-800 mb-4" id="popupTitle">Informações de Acessibilidade</h2>
-
-      <div class="space-y-4 text-black">
-        <!-- Deficiência Motora -->
-        <div class="flex items-start gap-3">
-          <div class="w-6 h-6 rounded-full bg-red-600"></div>
-          <div>
-            <h3 class="font-semibold">Deficiência Motora</h3>
-            <p>Locais sinalizados em <b>vermelho</b> possuem acessibilidade voltada a pessoas com deficiência motora
-              (ex.: rampas, pisos antiderrapantes, corrimãos).</p>
-            <img src="IMGs/n_rampas_acessibilidade.jpg" alt="Acessibilidade Motora" class="w-100 mt-5">
-          </div>
-        </div>
-
-        <!-- Deficiência Visual -->
-        <div class="flex items-start gap-3">
-          <div class="w-6 h-6 rounded-full bg-green-600"></div>
-          <div>
-            <h3 class="font-semibold">Deficiência Visual</h3>
-            <p>Locais em <b>verde</b> possuem recursos para pessoas com deficiência visual (ex.: piso tátil, placas em
-              braille, sinal sonoro).</p>
-            <img src="IMGs/piso tátil.png" alt="Acessibilidade Visual" class="w-100 mt-5">
-          </div>
-        </div>
-
-        <!-- Deficiência Motora e Visual -->
-        <div class="flex items-start gap-3">
-          <div class="w-6 h-6 rounded-full bg-blue-600"></div>
-          <div>
-            <h3 class="font-semibold">Deficiência Motora e Visual</h3>
-            <p>Em <b>azul</b> estão os locais que atendem tanto pessoas com deficiência motora quanto visual.</p>
-            <img src="IMGs/visual e motora.jpg" alt="Motora e Visual" class="w-100 mt-5">
-          </div>
-        </div>
-
-        <!-- Sugestão de melhoria -->
-        <div class="flex items-start gap-3">
-          <div class="w-6 h-6 rounded-full bg-gray-400"></div>
-          <div>
-            <h3 class="font-semibold">Sugestão de melhoria</h3>
-            <p>Locais onde a acessibilidade ainda não está presente, mas seria essencial incluir.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
 
   <!-- Conteúdo principal -->
   <main class="p-4 max-w-sm md:max-w-3xl lg:max-w-7xl mx-auto">
@@ -221,6 +159,68 @@
 
     <!-- Lista de locais -->
     <section id="lista-locais" class="mt-4 grid gap-6 md:grid-cols-2 lg:grid-cols-3 items-stretch"></section>
+
+    <!-- Botão Flutuante -->
+    <button id="openPopup"
+      class="fixed bottom-5 right-5 bg-blue-600 text-white px-4 py-2 rounded-full shadow-lg hover:bg-blue-700 transition">
+      Explicações Gerais
+    </button>
+
+    <!-- Fundo do Modal -->
+    <div id="popupModal" role="dialog" aria-modal="true" aria-labelledby="popupTitle"
+      class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50">
+      <!-- Caixa do Modal -->
+      <div class="bg-white rounded-lg shadow-lg max-w-2xl w-full p-6 relative overflow-y-auto max-h-[80vh]">
+        <!-- Botão de Fechar -->
+        <button id="closePopup" class="absolute top-3 right-3 text-gray-600 hover:text-gray-900 text-xl"
+          aria-label="Fechar janela de explicações">✖</button>
+
+        <h2 class="text-2xl font-bold text-green-800 mb-4" id="popupTitle">Informações de Acessibilidade</h2>
+
+        <div class="space-y-4 text-black">
+          <!-- Deficiência Motora -->
+          <div class="flex items-start gap-3">
+            <div class="w-6 h-6 rounded-full bg-red-600"></div>
+            <div>
+              <h3 class="font-semibold">Deficiência Motora</h3>
+              <p>Locais sinalizados em <b>vermelho</b> possuem acessibilidade voltada a pessoas com deficiência motora
+                (ex.: rampas, pisos antiderrapantes, corrimãos).</p>
+              <img src="IMGs/n_rampas_acessibilidade.jpg" alt="Acessibilidade Motora" class="w-100 mt-5">
+            </div>
+          </div>
+
+          <!-- Deficiência Visual -->
+          <div class="flex items-start gap-3">
+            <div class="w-6 h-6 rounded-full bg-green-600"></div>
+            <div>
+              <h3 class="font-semibold">Deficiência Visual</h3>
+              <p>Locais em <b>verde</b> possuem recursos para pessoas com deficiência visual (ex.: piso tátil, placas em
+                braille, sinal sonoro).</p>
+              <img src="IMGs/piso tátil.png" alt="Acessibilidade Visual" class="w-100 mt-5">
+            </div>
+          </div>
+
+          <!-- Deficiência Motora e Visual -->
+          <div class="flex items-start gap-3">
+            <div class="w-6 h-6 rounded-full bg-blue-600"></div>
+            <div>
+              <h3 class="font-semibold">Deficiência Motora e Visual</h3>
+              <p>Em <b>azul</b> estão os locais que atendem tanto pessoas com deficiência motora quanto visual.</p>
+              <img src="IMGs/visual e motora.jpg" alt="Motora e Visual" class="w-100 mt-5">
+            </div>
+          </div>
+
+          <!-- Sugestão de melhoria -->
+          <div class="flex items-start gap-3">
+            <div class="w-6 h-6 rounded-full bg-gray-400"></div>
+            <div>
+              <h3 class="font-semibold">Sugestão de melhoria</h3>
+              <p>Locais onde a acessibilidade ainda não está presente, mas seria essencial incluir.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
   </main>
 
