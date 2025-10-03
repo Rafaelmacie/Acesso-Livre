@@ -43,6 +43,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     }).setView([-5.12798, -39.733], 14.5);
 
     map.options.closeButtonLabel = 'Fechar';
+    L.Popup.prototype.options.closeButtonLabel = 'Fechar';
 
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
         attribution: "© OpenStreetMap contributors"
