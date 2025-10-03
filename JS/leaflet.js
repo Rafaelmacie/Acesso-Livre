@@ -1,8 +1,10 @@
 // LEAFLET
 
-// Adicione esta variável no topo do arquivo para facilitar a troca de ambiente
 // const API_URL = "http://localhost:3000"; // Para teste local
 const API_URL = "https://acesso-livre.onrender.com"; // Para produção
+const mainContent = document.querySelector('main');
+const headerContent = document.querySelector('header');
+const footerContent = document.querySelector('footer');
 
 document.addEventListener("DOMContentLoaded", async function () {
     const mapContainer = document.getElementById("mapContainer");
@@ -134,11 +136,19 @@ document.addEventListener("DOMContentLoaded", async function () {
             mapContainer.classList.toggle("fullscreen");
             map.invalidateSize();
 
-            if (mapContainer.classList.contains("fullscreen")) {
+            const isFullscreen = mapContainer.classList.contains("fullscreen");
+
+            // Define se o conteúdo de fundo deve ser escondido dos leitores de tela
+            mainContent.setAttribute('aria-hidden', isFullscreen);
+            headerContent.setAttribute('aria-hidden', isFullscreen);
+            footerContent.setAttribute('aria-hidden', isFullscreen);
+
+            if (isFullscreen) {
+                // Se está em tela cheia, prende o foco
                 trapFocus(mapContainer);
-                // Adicione esta linha para mover o foco diretamente para o mapa
                 document.getElementById('map').focus();
             } else {
+                // Se saiu da tela cheia, libera o foco
                 removeTrapFocus();
                 toggleMapSizeBtn.focus();
             }
