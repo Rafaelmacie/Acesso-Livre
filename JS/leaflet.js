@@ -38,7 +38,11 @@ document.addEventListener("DOMContentLoaded", async function () {
     });
 
     // Inicia o mapa
-    const map = L.map("map").setView([-5.12798, -39.733], 14.5);
+    const map = L.map("map", {
+        closePopupOnClick: true
+    }).setView([-5.12798, -39.733], 14.5);
+
+    map.options.closeButtonLabel = 'Fechar';
 
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
         attribution: "© OpenStreetMap contributors"
@@ -92,7 +96,10 @@ document.addEventListener("DOMContentLoaded", async function () {
             </div>
             `;
 
-            L.marker([local.latitude, local.longitude], { icon: icone })
+            L.marker([local.latitude, local.longitude], {
+                icon: icone,
+                alt: `Marcador ${local.tipo_acessibilidade} para ${local.nome_local}`
+            })
                 .addTo(map)
                 .bindPopup(popupContent);
         });
@@ -139,27 +146,27 @@ function editarLocal(dados) {
 }
 
 async function deletarLocal(id) {
-  const confirmou = confirm("Tem certeza que deseja remover este local? Esta ação não pode ser desfeita.");
-  
-  if (!confirmou) {
-    return; // Cancela a operação se o usuário clicar em "Cancelar"
-  }
+    const confirmou = confirm("Tem certeza que deseja remover este local? Esta ação não pode ser desfeita.");
 
-  try {
-    const response = await fetch(`${API_URL}/locais/${id}`, {
-      method: 'DELETE'
-    });
-
-    if (!response.ok) {
-      const erro = await response.json();
-      throw new Error(erro.message || 'Não foi possível remover o local.');
+    if (!confirmou) {
+        return; // Cancela a operação se o usuário clicar em "Cancelar"
     }
 
-    alert('Local removido com sucesso!');
-    window.location.reload(); // Recarrega a página para atualizar o mapa e a lista
+    try {
+        const response = await fetch(`${API_URL}/locais/${id}`, {
+            method: 'DELETE'
+        });
 
-  } catch (error) {
-    console.error('Erro ao remover local:', error);
-    alert(`Erro: ${error.message}`);
-  }
+        if (!response.ok) {
+            const erro = await response.json();
+            throw new Error(erro.message || 'Não foi possível remover o local.');
+        }
+
+        alert('Local removido com sucesso!');
+        window.location.reload(); // Recarrega a página para atualizar o mapa e a lista
+
+    } catch (error) {
+        console.error('Erro ao remover local:', error);
+        alert(`Erro: ${error.message}`);
+    }
 }
