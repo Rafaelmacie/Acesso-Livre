@@ -138,17 +138,24 @@ document.addEventListener("DOMContentLoaded", async function () {
 
             const isFullscreen = mapContainer.classList.contains("fullscreen");
 
-            // Define se o conteúdo de fundo deve ser escondido dos leitores de tela
-            mainContent.setAttribute('aria-hidden', isFullscreen);
+            // 1. Esconde o header e o footer dos leitores de tela
             headerContent.setAttribute('aria-hidden', isFullscreen);
             footerContent.setAttribute('aria-hidden', isFullscreen);
 
+            // 2. Esconde todos os filhos diretos do <main> EXCETO o mapContainer
+            Array.from(mainContent.children).forEach(child => {
+                if (child.id !== 'mapContainer') {
+                    // Se o filho não for o container do mapa, esconda-o
+                    child.setAttribute('aria-hidden', isFullscreen);
+                }
+            });
+
             if (isFullscreen) {
-                // Se está em tela cheia, prende o foco
+                // 3. Se está em tela cheia, move o foco para o mapa e o prende
                 trapFocus(mapContainer);
                 document.getElementById('map').focus();
             } else {
-                // Se saiu da tela cheia, libera o foco
+                // 4. Se saiu da tela cheia, libera o foco e o devolve ao botão
                 removeTrapFocus();
                 toggleMapSizeBtn.focus();
             }
